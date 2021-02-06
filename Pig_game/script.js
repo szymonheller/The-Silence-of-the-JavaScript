@@ -80,3 +80,31 @@ btnHold.addEventListener("click", function () {
     }
   }
 });
+
+// Reset game
+btnNew.addEventListener("click", function () {
+  playing = true;
+  currentScore = 0;
+  activePlayer = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  scores[0] = 0;
+  scores[1] = 0;
+  if (!diceEl.classList.contains("hidden")) {
+    diceEl.classList.add("hidden");
+  }
+  if (!player0El.classList.contains("player--active")) {
+    player0El.classList.add("player--active");
+  }
+  if (player1El.classList.contains("player--active")) {
+    player1El.classList.remove("player--active");
+  }
+  if (player0El.classList.contains("player--winner")) {
+    player0El.classList.remove("player--winner");
+  }
+  if (player1El.classList.contains("player--winner")) {
+    player1El.classList.remove("player--winner");
+  }
+});
