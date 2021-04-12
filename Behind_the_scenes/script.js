@@ -30,7 +30,7 @@ function calcAge(birthYear) {
 const firstName = "Szymon";
 calcAge(1996);
 
-*/
+
 
 // -- hoisting in practice --
 
@@ -78,3 +78,46 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+
+
+// The this Keyword
+
+console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log(2021 - birthYear);
+  console.log(this);
+};
+
+calcAge(1996);
+
+const calcAgeArrow = (birthYear) => {
+  console.log(2021 - birthYear);
+  console.log(this);
+};
+
+calcAgeArrow(1996);
+
+*/
+
+const szymon = {
+  name: "Szymon",
+  year: 1996,
+  calcAge: function () {
+    return 2021 - this.year;
+  },
+};
+
+console.log(szymon.calcAge());
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = szymon.calcAge;
+
+matilda.calcAge();
+
+const f = szymon.calcAge;
+f();
